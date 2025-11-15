@@ -1,0 +1,38 @@
+(defwindow mi-primera-ventana
+  :windowtype "dock";
+  :monitor 0;
+  :geometry (geometry
+  :x "0%"
+  :y "0%"
+  :width "100%"
+  :height "30px"
+  :anchor "top center")
+  :reserve (struts :side "top" :distance "30px");
+  :exclusive true;
+(centerbox :orientation "h"
+  (box :orientation "h" :spacing 10
+    (workspaces-widget)
+    (label :text "Current: ${current_workspace}"))  ;
+  (label :text hora)
+  (label :text "Derecha"))  
+
+(defpoll hora :interval "1s"
+  `date '+%H:%M'`)
+
+(defpoll workspaces :interval "1s"
+  `hyprctl workspaces -j | jq 'map(.id) | sort'`)
+
+(defpoll current_workspace :interval "1s"
+  `hyprctl activeworkspace -j | jq '.id'`)
+
+(defwidget workspace-button [id]
+  (button
+    :class "workspace ${id == current_workspace ? 'active' : 'inactive'}"
+    :onclick "hyprctl dispatch workspace ${id}"
+    "${id} (${id == current_workspace})"))  ; <-- Muestra si la comparación es true/false
+
+(defwidget workspaces-widget []
+  (box :orientation "h" 
+       :spacing 5
+    (for workspace in workspaces
+      (workspace-button :id workspace))))

@@ -1,0 +1,100 @@
+//           __                ____  _         
+//      ____/ /_  ______ ___  / __ \(_)_______ 
+//     / __  / / / / __ `__ \/ /_/ / / ___/ _ \
+//    / /_/ / /_/ / / / / / / _, _/ / /__/  __/
+//    \__,_/\__,_/_/ /_/ /_/_/ |_/_/\___/\___/ 
+//                                             
+
+
+
+configuration {
+	modi:				"drun";
+	font:				"Product Sans 10";
+	show-icons:                     true;
+	icon-theme: 			"Reversal-dark";
+	display-drun: 			"    Apps";
+	drun-display-format:            "{name}";
+	sidebar-mode: 			false;
+}
+
+@theme "/dev/null"
+
+* {
+     bg: rgba(15,15, 26, 0.9);
+    fg: #cdd6f4;
+    accent: #b4befe;
+    selected: #313244;
+    urgent: #f38ba8;
+    
+    background-color: transparent;
+    text-color: @fg;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    background-color: @bg;
+    border: 2px;
+    border-color: @accent;
+    border-radius: 12px;
+    width: 400px;
+    padding: 20px;
+}
+
+prompt {
+	background-color:		transparent;
+	enabled:			true;
+	padding:			0.3% 0.5px 0% 0.5%;
+	font:				"Product Sans 10";
+}
+
+entry {
+    	placeholder:			"Search...";
+	background-color:               transparent;
+    	placeholder-color:              @accent;
+    	expand:                         true;
+    	padding:                        0.5% 0.5px 0% 0.5%;
+}
+
+inputbar {
+	children:			[ prompt, entry ];
+    	background-color:               @bg;
+    	expand:                         false;
+    	border-radius:                  8px;
+    	margin:                         0%;
+    	padding:                        10px;
+}
+
+listview {
+    lines: 5;
+    spacing: 10px;
+    scrollbar: false;
+}
+
+mainbox {
+    	children:                       [ inputbar, listview ];
+    	spacing:                       	20px;
+}
+
+element {
+    padding: 15px;
+    border-radius: 8px;
+    text-color: @fg;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: @accent;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+element-icon {
+    size: 40px;
+    padding: 0 10px 0 0;
+}
+
+

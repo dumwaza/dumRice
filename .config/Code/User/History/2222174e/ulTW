@@ -1,0 +1,99 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 38,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio", "network", "custom/power"],
+
+    "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+        "default": "", 
+        "active": ""
+    },
+    "on-click": "activate",
+    "all-outputs": true,
+    "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+    }
+},
+
+#tray {
+    padding: 0px 8px;
+    margin: 0 4px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @urgent;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+#tray menu {
+    background-color: @bg;
+    border: 1px solid rgba(100, 100, 100, 0.35);
+    border-radius: 8px;
+    padding: 8px;
+    color: @fg;
+}
+
+#tray menu menuitem {
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+#tray menu menuitem:hover {
+    background-color: @selected;
+},
+
+    "clock": {
+        "format": " {:%H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "today": "<span color='#a3be8c'><b>{}</b></span>"
+            }
+        }
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " mute",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "tooltip-format": "{desc}"
+    },
+
+    "network": {
+        "interval": 3,
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": "",
+        "format-disconnected": "",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "custom/power": {
+        "format": "",
+        "on-click": "~/.config/rofi/scripts/powermenu.sh",
+        "tooltip": false
+    }
+}

@@ -1,0 +1,33 @@
+// Reset básico
+* {
+  all: unset;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+// La barra completa
+window {
+  background-color: #1e1e2e;
+  color: #cdd6f4;
+}
+
+// Los botones de workspace
+.workspace {
+  padding: 2px 8px;
+  margin: 0 3px;
+  background-color: #313244;
+  color: #cdd6f4;
+  border-radius: 5px;
+}
+
+// Workspace activo
+.workspace.active {
+  background-color: #89b4fa;
+  color: #1e1e2e;
+  font-weight: bold;
+}
+
+// Hover (cuando pasas el mouse)
+.workspace:hover {
+  background-color: #45475a;
+}
