@@ -1,53 +1,48 @@
 #!/bin/bash
 
-# ===============================
-#      Instalador definitivo
-#          dumRice
-# ===============================
+# =========================
+# Instalador seguro de dumRice
+# =========================
 
-# Cambiar al home
-cd ~
+set -e
 
-# 1️⃣ Comprobar si git está instalado
-if ! command -v git &>/dev/null; then
-    echo "Git no está instalado. Instalando..."
-    sudo pacman -S git --noconfirm
+echo "🛡️  Instalador seguro de dumRice iniciado"
+
+# 1️⃣ Respaldar ~/.config actual
+BACKUP_DIR="$HOME/.config.backup_$(date +%s)"
+if [ -d "$HOME/.config" ]; then
+    echo "📦 Respaldando tu configuración actual en $BACKUP_DIR..."
+    mv "$HOME/.config" "$BACKUP_DIR"
 fi
 
-# 2️⃣ Clonar el repo si no existe o actualizar si ya existe
-if [ -d "dumRice" ]; then
-    echo "dumRice ya existe, actualizando..."
-    cd dumRice
-    git pull
-    cd ..
+# 2️⃣ Crear ~/.config si no existe
+mkdir -p "$HOME/.config"
+
+# 3️⃣ Copiar todas las configuraciones del dumRice
+echo "📂 Copiando configuraciones del dumRice..."
+for DIR in hypr waybar eww kitty rofi dunst powerlevel10k rofi-blurry-powermenu wallpapers; do
+    if [ -d "./$DIR" ]; then
+        cp -r "./$DIR" "$HOME/.config/"
+        echo "✅ Copiado: $DIR"
+    fi
+done
+
+# 4️⃣ Comprobar dependencias básicas (Arch / Manjaro)
+DEPENDENCIAS=(hyprland waybar eww kitty rofi dunst git)
+echo "🔍 Comprobando dependencias..."
+MISSING=()
+for PKG in "${DEPENDENCIAS[@]}"; do
+    if ! command -v $PKG &>/dev/null; then
+        MISSING+=($PKG)
+    fi
+done
+
+if [ ${#MISSING[@]} -gt 0 ]; then
+    echo "⚠️  Faltan las siguientes dependencias: ${MISSING[@]}"
+    echo "Instálalas con: sudo pacman -S ${MISSING[@]}"
 else
-    echo "Clonando dumRice desde GitHub..."
-    git clone https://github.com/dumwaza/dumRice.git
+    echo "✅ Todas las dependencias están instaladas"
 fi
 
-# 3️⃣ Instalar dependencias necesarias
-echo "Instalando dependencias necesarias..."
-sudo pacman -S --needed --noconfirm hyprland waybar eww kitty rofi dunst
-
-# 4️⃣ Respaldar configuraciones actuales
-echo "Respaldando configuraciones existentes..."
-for dir in hypr waybar eww kitty rofi dunst powerlevel10k rofi-blurry-powermenu wallpapers; do
-    if [ -d "$HOME/.config/$dir" ]; then
-        mv "$HOME/.config/$dir" "$HOME/.config/${dir}.bak_$(date +%Y%m%d_%H%M%S)"
-        echo "Respaldo de $dir creado."
-    fi
-done
-
-# 5️⃣ Copiar la configuración del dumRice
-echo "Copiando configuraciones de dumRice..."
-for dir in hypr waybar eww kitty rofi dunst powerlevel10k rofi-blurry-powermenu wallpapers; do
-    if [ -d "$HOME/dumRice/$dir" ]; then
-        cp -r "$HOME/dumRice/$dir" "$HOME/.config/"
-        echo "$dir copiado a ~/.config"
-    fi
-done
-
-# 6️⃣ Mensaje final
-echo ""
-echo "✅ dumRice instalado correctamente."
-echo "Si todo salió bien, reinicia Hyprland o tu sesión para ver tu rice activo."
+echo "🎉 dumRice instalado correctamente!"
+echo "Si quieres volver a tu configuración anterior, la encontrarás en: $BACKUP_DIR"
