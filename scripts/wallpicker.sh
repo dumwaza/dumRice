@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # === CONFIGURACIÓN ===
-WALLPAPER_DIR="$HOME/.config/wallpapers"
+WALLPAPER_DIR="$HOME/wallpapers"
 THUMB_DIR="$WALLPAPER_DIR/thumbs"
 NAMESPACE="wayland-1"
 

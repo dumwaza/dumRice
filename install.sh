@@ -150,6 +150,12 @@ if [ -d "$DOTFILES_DIR/scripts" ]; then
         fi
     done
 fi
+
+# Wallpapers
+if [ -d "$DOTFILES_DIR/wallpapers" ]; then
+    print_message "Instalando wallpapers..."
+    install_config "$DOTFILES_DIR/wallpapers" "$HOME/wallpapers"
+fi
     
 echo ""
 print_success "¡Instalación completada!"
