@@ -44,7 +44,7 @@ swww img "$selected_path" \
   --transition-bezier 0.4,0.0,0.2,1.0
 
 # Copiar el wallpaper seleccionado a wallpaper.png para Hyprlock
-cp "$selected_path" ~/.config/wallpapers/wallpaper.png
+cp "$selected_path" "$WALLPAPER_DIR/wallpaper.png"
 
 
 # Guarda el último wallpaper en un archivo
