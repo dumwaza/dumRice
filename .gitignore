@@ -1,0 +1,35 @@
+# Archivos de sistema
+*.log
+*.lock
+*.tmp
+*.cache
+.DS_Store
+
+# VSCode
+Code/
+.vscode/
+
+# Aplicaciones que no son configs
+Electron/
+discord/
+spotify/
+mozilla/
+
+# Cache y datos temporales
+**/Cache/
+**/cache/
+**/logs/
+**/Crashpad/
+**/*.lock
+
+# Datos de usuario específicos
+dconf/
+pulse/
+session/
+Cookies*
+**/leveldb/
+
+# Otros
+yay/
+go/
+powerlevel10k/

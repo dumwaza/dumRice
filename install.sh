@@ -125,10 +125,26 @@ for config_dir in "$DOTFILES_DIR/.config"/*; do
     fi
 done
 
-# Scripts (si existe la carpeta)
+# Scripts personales
 if [ -d "$DOTFILES_DIR/scripts" ]; then
-    print_message "Instalando scripts..."
-    install_config "$DOTFILES_DIR/scripts" "$HOME/.local/bin/dumrice-scripts"
+    print_message "Instalando scripts personales..."
+    mkdir -p "$HOME/.local/bin"
+    
+    for script in "$DOTFILES_DIR/scripts"/*; do
+        if [ -f "$script" ]; then
+            script_name=$(basename "$script")
+            # Hacer backup si existe
+            if [ -f "$HOME/.local/bin/$script_name" ]; then
+                print_warning "Respaldando: $HOME/.local/bin/$script_name"
+                mv "$HOME/.local/bin/$script_name" "$BACKUP_DIR/"
+            fi
+            # Copiar script
+            cp "$script" "$HOME/.local/bin/$script_name"
+            chmod +x "$HOME/.local/bin/$script_name"
+            print_success "Script instalado: $script_name"
+        fi
+    done
+fi
     
     # Hacer ejecutables todos los scripts
     chmod +x "$HOME/.local/bin/dumrice-scripts"/*

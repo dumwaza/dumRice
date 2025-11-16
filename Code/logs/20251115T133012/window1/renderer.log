@@ -1,7 +1,0 @@
-2025-11-15 13:30:13.299 [info] Started local extension host with pid 53800.
-2025-11-15 13:30:13.512 [error] Extension 'ms-python.vscode-python-envs' appears in product.json but enables LESS API proposals than the extension wants.
-package.json (LOSES): terminalShellEnv, terminalDataWriteEvent
-product.json (WINS): terminalShellEnv
-2025-11-15 13:30:13.924 [info] MCP Registry configured: https://api.mcp.github.com/2025-09-15
-2025-11-15 13:30:14.049 [info] Settings Sync: Account status changed from uninitialized to unavailable
-2025-11-15 13:30:15.974 [info] [perf] Render performance baseline is 17ms
