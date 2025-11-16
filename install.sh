@@ -82,6 +82,10 @@ fi
 # Kitty (si existe)
 if [ -d "$DOTFILES_DIR/.config/kitty" ]; then
     install_config "$DOTFILES_DIR/.config/kitty" "$HOME/.config/kitty"
+    # Hacer ejecutable el startup.sh si existe
+    if [ -f "$HOME/.config/kitty/startup.sh" ]; then
+        chmod +x "$HOME/.config/kitty/startup.sh"
+    fi
 fi
 
 # Rofi (si existe)
@@ -146,11 +150,6 @@ if [ -d "$DOTFILES_DIR/scripts" ]; then
     done
 fi
     
-    # Hacer ejecutables todos los scripts
-    chmod +x "$HOME/.local/bin/dumrice-scripts"/*
-    print_success "Scripts instalados y marcados como ejecutables"
-fi
-
 echo ""
 print_success "¡Instalación completada!"
 echo ""
