@@ -189,11 +189,25 @@ if [ -d "$DOTFILES_DIR/scripts" ]; then
     done
 fi
 
-# Wallpapers
-if [ -d "$DOTFILES_DIR/wallpapers" ]; then
+# ===============================
+#         Wallpapers
+# ===============================
+if [ -d "$DOTFILES_DIR/.config/wallpapers" ]; then
     print_message "Instalando wallpapers..."
-    install_config "$DOTFILES_DIR/wallpapers" "$HOME/wallpapers"
+
+    # Crear directorio de destino
+    mkdir -p "$HOME/.config/wallpapers"
+
+    # Copiar solo archivos de imagen, ignorando el directorio thumbs
+    find "$DOTFILES_DIR/.config/wallpapers" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) \
+        -exec cp {} "$HOME/.config/wallpapers/" \;
+
+    # Ajustar permisos
+    chmod -R u+rwX,go+rX "$HOME/.config/wallpapers"
+
+    print_success "Wallpapers instalados correctamente en ~/.config/wallpapers"
 fi
+
     
 echo ""
 print_success "¡Instalación completada!"
