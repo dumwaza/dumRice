@@ -106,11 +106,9 @@ fi
 # ===============================
 
 print_message "Aplicando configuración GTK..."
-
-# Crear directorio GTK si no existe
 mkdir -p "$HOME/.config/gtk-3.0"
 
-# Instalar settings.ini desde el repo (si existe)
+# Instalar settings.ini si existe en el repo
 if [ -f "$DOTFILES_DIR/.config/gtk-3.0/settings.ini" ]; then
     install_config "$DOTFILES_DIR/.config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
     print_success "GTK3 configurado correctamente"
@@ -118,12 +116,29 @@ else
     print_warning "No se encontró settings.ini en el repo"
 fi
 
-# Instalar .gtkrc-2.0 si existe en el repo
+# Instalar .gtkrc-2.0 si existe
 if [ -f "$DOTFILES_DIR/.gtkrc-2.0" ]; then
     install_config "$DOTFILES_DIR/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
     print_success "GTK2 configurado correctamente"
 else
     print_warning "No se encontró .gtkrc-2.0 en el repo"
+fi
+
+# ===============================
+#   Aplicar Papirus Dark automáticamente
+# ===============================
+if command -v gsettings &>/dev/null; then
+    print_message "Aplicando Papirus Dark como tema GTK e íconos..."
+
+    # Configura GTK3
+    gsettings set org.gnome.desktop.interface gtk-theme "Papirus-Dark"
+    gsettings set org.gnome.desktop.wm.preferences theme "Papirus-Dark"
+    # Configura íconos
+    gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+
+    print_success "Papirus Dark aplicado correctamente"
+else
+    print_warning "gsettings no encontrado, no se pudo aplicar Papirus Dark automáticamente"
 fi
 
 
