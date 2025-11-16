@@ -85,6 +85,7 @@ if [ -d "$DOTFILES_DIR/.config/kitty" ]; then
     # Hacer ejecutable el startup.sh si existe
     if [ -f "$HOME/.config/kitty/startup.sh" ]; then
         chmod +x "$HOME/.config/kitty/startup.sh"
+        print_success "Permisos de ejecución aplicados a startup.sh"
     fi
 fi
 
