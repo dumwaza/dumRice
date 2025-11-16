@@ -39,3 +39,5 @@ powerlevel10k/
 
 # Session y datos de VSCode
 .config/Code/
+.config/hypr/last_wallpaper.txt
+.config/Code/
