@@ -33,3 +33,9 @@ Cookies*
 yay/
 go/
 powerlevel10k/
+
+# Archivos generados automáticamente
+.config/hypr/last_wallpaper.txt
+
+# Session y datos de VSCode
+.config/Code/
