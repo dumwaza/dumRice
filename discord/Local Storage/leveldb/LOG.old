@@ -1,0 +1,5 @@
+2025/11/15-15:03:03.158 1479c Reusing MANIFEST /home/rice/.config/discord/Local Storage/leveldb/MANIFEST-000001
+2025/11/15-15:03:03.161 1479c Recovering log #17
+2025/11/15-15:03:03.174 1479c Level-0 table #23: started
+2025/11/15-15:03:03.191 1479c Level-0 table #23: 2669294 bytes OK
+2025/11/15-15:03:03.193 1479c Delete type=0 #17

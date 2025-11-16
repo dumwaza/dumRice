@@ -1,0 +1,46 @@
+#           __                ____  _         
+#      ____/ /_  ______ ___  / __ \(_)_______ 
+#     / __  / / / / __ `__ \/ /_/ / / ___/ _ \
+#    / /_/ / /_/ / / / / / / _, _/ / /__/  __/
+#    \__,_/\__,_/_/ /_/ /_/_/ |_/_/\___/\___/ 
+#                                             
+
+
+
+[global]
+    font = JetBrainsMono Nerd Font 10, Noto Color Emoji 10
+    frame_width = 1
+    frame_color = "#b4befe"
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 10
+    transparency = 10
+    corner_radius = 8
+    icon_position = left
+    word_wrap = yes
+    alignment = left
+    shrink = no
+    follow = mouse
+    monitor = 0
+    indicate_hidden = yes
+    show_age_threshold = 60
+    sticky_history = yes
+    history_length = 20
+
+[urgency_low]
+    background = "#23232e"
+    foreground = "#cdd6f4"
+    frame_color = "#313244"
+    timeout = 4
+
+[urgency_normal]
+    background = "#23232e"
+    foreground = "#cdd6f4"
+    frame_color = "#b4befe"
+    timeout = 6
+
+[urgency_critical]
+    background = "#23232e"
+    foreground = "#f38ba8"
+    frame_color = "#f38ba8"
+    timeout = 0

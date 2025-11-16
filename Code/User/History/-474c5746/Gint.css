@@ -1,0 +1,89 @@
+/*           __                ____  _         
+        ____/ /_  ______ ___  / __ \(_)_______ 
+       / __  / / / / __ `__ \/ /_/ / / ___/ _ \
+      / /_/ / /_/ / / / / / / _, _/ / /__/  __/
+      \__,_/\__,_/_/ /_/ /_/_/ |_/_/\___/\___/ */
+                                           
+
+
+
+* {
+  font-family: "Font Awesome 7 Free", "Font Awesome 7 Brands", "JetBrainsMono Nerd Font", monospace;
+  font-weight: 900;
+}
+
+
+    @define-color bg rgba(35, 35, 46, 0.9);
+    @define-color fg #cdd6f4;
+    @define-color accent #b4befe;
+    @define-color selected #313244;
+    @define-color urgent #f38ba8;
+
+
+window#waybar {
+    background-color: @bg;
+    border: 1px solid rgba(100, 100, 100, 0.35);
+    border-radius: 12px;
+    margin: 8px;
+    padding: 0 12px;
+}
+
+#workspaces button {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: @fg; 
+    margin: 0 2px;
+    border: none;
+    background: transparent;
+    transition: color 0.3s ease;
+}
+
+#workspaces button.active {
+    color: @fg;
+}
+
+#workspaces button:hover {
+    color: @fg;
+}
+
+#clock {
+    color: @fg;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 20px;
+}
+
+#pulseaudio,
+#network,
+#custom-power {
+    padding: 0 10px;
+    margin: 0 2px;
+}
+
+#pulseaudio {
+    color: @fg;
+}
+
+#pulseaudio.muted {
+    color: @fg;
+}
+
+#network {
+    color: @fg;
+}
+
+#network.disconnected {
+    color: @fg;
+}
+
+#custom-power {
+    color: @fg;
+    font-size: 15px;
+    margin-left: 8px;
+    padding-right: 8px;
+}
+
+#custom-power:hover {
+    color: @fg;
+}
+
