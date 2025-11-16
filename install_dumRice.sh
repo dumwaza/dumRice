@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # =========================
-# Instalador seguro de dumRice v2
+# Instalador seguro de dumRice v3
 # =========================
 
 set -e
@@ -27,11 +27,20 @@ for DIR in hypr waybar eww kitty rofi dunst powerlevel10k rofi-blurry-powermenu 
     fi
 done
 
-# 4️⃣ Dar permisos de ejecución a todos los scripts .sh
+# 4️⃣ Dar permisos de ejecución a todos los scripts .sh dentro de ~/.config
 echo "🔧 Ajustando permisos de ejecución en scripts..."
 find "$HOME/.config" -type f -name "*.sh" -exec chmod +x {} \;
 
-# 5️⃣ Comprobar dependencias básicas (Arch / Manjaro)
+# 5️⃣ Asegurar permisos de lectura y ejecución en carpetas importantes
+echo "🔒 Ajustando permisos de carpetas..."
+chmod -R 755 "$HOME/.config/hypr"
+chmod -R 755 "$HOME/.config/waybar"
+chmod -R 755 "$HOME/.config/eww"
+chmod -R 755 "$HOME/.config/kitty"
+chmod -R 755 "$HOME/.config/rofi"
+chmod -R 755 "$HOME/.config/dunst"
+
+# 6️⃣ Comprobar dependencias básicas
 DEPENDENCIAS=(hyprland waybar eww kitty rofi dunst git)
 echo "🔍 Comprobando dependencias..."
 MISSING=()
