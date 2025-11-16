@@ -12,7 +12,7 @@ fi
 if [ -f ~/.config/hypr/last_wallpaper.txt ]; then
     WALLPAPER=$(cat ~/.config/hypr/last_wallpaper.txt)
 else
-    WALLPAPER="$HOME/Imágenes/wallpapers/wallpaper.png"
+    WALLPAPER="$HOME/wallpapers/wallpaper.png"
 fi
 
 # Aplicar el wallpaper
