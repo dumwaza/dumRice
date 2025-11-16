@@ -101,6 +101,32 @@ if [ -d "$DOTFILES_DIR/.config/kitty" ]; then
     fi
 fi
 
+# ===============================
+#   GTK (Papirus Dark / Adwaita-dark)
+# ===============================
+
+print_message "Aplicando configuración GTK..."
+
+# Crear directorio GTK si no existe
+mkdir -p "$HOME/.config/gtk-3.0"
+
+# Instalar settings.ini desde el repo (si existe)
+if [ -f "$DOTFILES_DIR/.config/gtk-3.0/settings.ini" ]; then
+    install_config "$DOTFILES_DIR/.config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
+    print_success "GTK3 configurado correctamente"
+else
+    print_warning "No se encontró settings.ini en el repo"
+fi
+
+# Instalar .gtkrc-2.0 si existe en el repo
+if [ -f "$DOTFILES_DIR/.gtkrc-2.0" ]; then
+    install_config "$DOTFILES_DIR/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
+    print_success "GTK2 configurado correctamente"
+else
+    print_warning "No se encontró .gtkrc-2.0 en el repo"
+fi
+
+
 # Rofi (si existe)
 if [ -d "$DOTFILES_DIR/.config/rofi" ]; then
     install_config "$DOTFILES_DIR/.config/rofi" "$HOME/.config/rofi"
