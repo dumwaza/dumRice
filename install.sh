@@ -66,6 +66,13 @@ echo ""
 # Obtener el directorio actual (donde está el repo clonado)
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Verificar que DOTFILES_DIR es válido
+print_message "Directorio de dotfiles: $DOTFILES_DIR"
+if [ ! -d "$DOTFILES_DIR/.config" ]; then
+    print_error "Error: No se puede encontrar $DOTFILES_DIR/.config"
+    exit 1
+fi
+
 # Instalar configuraciones
 print_message "Instalando configuraciones..."
 
