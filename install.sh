@@ -72,6 +72,11 @@ print_message "Instalando configuraciones..."
 # Hyprland
 if [ -d "$DOTFILES_DIR/.config/hypr" ]; then
     install_config "$DOTFILES_DIR/.config/hypr" "$HOME/.config/hypr"
+    # Hacer ejecutables los scripts de Hyprland
+    if [ -f "$HOME/.config/hypr/autostart.sh" ]; then
+        chmod +x "$HOME/.config/hypr/autostart.sh"
+        print_success "Permisos de ejecución aplicados a autostart.sh"
+    fi
 fi
 
 # Waybar (si existe)
