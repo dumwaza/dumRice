@@ -1,47 +1,35 @@
-# 🍚 dumRice
+# dumRice
 
 Mi configuración personal de Hyprland - Un rice minimalista y funcional.
 
-## 📸 Screenshots
+![Screenshot](screenshots/desktop.png)
 
-![Screenshot 1](screenshots/desktop.png)
-![Screenshot 2](screenshots/terminal.png)
-
-> **Nota:** Agrega tus capturas de pantalla en la carpeta `screenshots/`
-
-## ✨ Características
+## 📋 Características
 
 - **Window Manager:** Hyprland
 - **Status Bar:** Waybar
-- **Terminal:** [Tu terminal aquí]
-- **Launcher:** [Rofi/Wofi]
-- **Notifications:** [Dunst/Mako]
-- **Theme:** [Tu tema]
-- **Font:** [Tu fuente]
+- **Terminal:** Kitty
+- **Launcher:** Rofi
+- **Wallpaper Manager:** swww
+- **Notifications:** Dunst
+- **Wallpaper Picker:** Script personalizado con miniaturas en Rofi
 
 ## 📦 Dependencias
 
-### Arch Linux / Manjaro
+### Obligatorias
 
 ```bash
-# ESENCIAL - Sin esto no funcionará
-sudo pacman -S swww
-
-# Básicas
-sudo pacman -S hyprland waybar kitty rofi dunst
-
-# Multimedia y utilidades
-sudo pacman -S playerctl imagemagick
+sudo pacman -S hyprland waybar kitty rofi dunst \
+               swww imagemagick \
+               polkit-kde-agent qt5-wayland qt6-wayland \
+               pipewire wireplumber xdg-desktop-portal-hyprland
 ```
 
-### Dependencias opcionales
+### Utilidades adicionales
 
 ```bash
 # Capturas de pantalla
 sudo pacman -S grim slurp
-
-# Wallpapers
-sudo pacman -S swaybg hyprpaper
 
 # Bloqueo de pantalla
 sudo pacman -S swaylock-effects
@@ -50,9 +38,27 @@ sudo pacman -S swaylock-effects
 sudo pacman -S brightnessctl playerctl
 ```
 
+### Para otras distribuciones
+
+**Fedora:**
+```bash
+sudo dnf install hyprland waybar kitty rofi dunst \
+                 swww ImageMagick \
+                 polkit-gnome pipewire wireplumber \
+                 xdg-desktop-portal-hyprland
+```
+
 ## 🚀 Instalación
 
-### Instalación rápida
+### Actualizar el sistema
+
+**IMPORTANTE:** Antes de instalar, actualiza tu sistema:
+
+```bash
+sudo pacman -Syu
+```
+
+### Instalación automática
 
 ```bash
 git clone https://github.com/dumwaza/dumRice.git
@@ -66,23 +72,31 @@ chmod +x install.sh
 Si prefieres instalar manualmente:
 
 ```bash
-# Hacer backup de tus configs actuales
+# 1. Hacer backup de tus configs actuales
 mkdir -p ~/.config/backup
-cp -r ~/.config/hypr ~/.config/backup/
-cp -r ~/.config/waybar ~/.config/backup/
+cp -r ~/.config/hypr ~/.config/backup/ 2>/dev/null
+cp -r ~/.config/waybar ~/.config/backup/ 2>/dev/null
 
-# Clonar el repositorio
+# 2. Clonar el repositorio
 git clone https://github.com/dumwaza/dumRice.git
+cd dumRice
 
-# Crear symlinks
-ln -sf ~/dumRice/.config/hypr ~/.config/hypr
-ln -sf ~/dumRice/.config/waybar ~/.config/waybar
-# Repite para otras configuraciones...
+# 3. Copiar configuraciones
+cp -r .config/hypr ~/.config/
+cp -r .config/waybar ~/.config/
+cp -r .config/wallpapers ~/.config/
+
+# 4. Crear directorio de scripts y dar permisos
+mkdir -p ~/.config/hypr/scripts
+chmod +x ~/.config/hypr/scripts/*.sh
+chmod +x scripts/*.sh
+
+# 5. Recargar Hyprland o reiniciar sesión
 ```
 
-## ⌨️ Keybindings
+## ⌨️ Keybindings principales
 
-### Básicos
+### Ventanas
 
 | Keybinding | Acción |
 |------------|--------|
@@ -93,6 +107,7 @@ ln -sf ~/dumRice/.config/waybar ~/.config/waybar
 | `SUPER + F` | Toggle fullscreen |
 | `SUPER + Return` | Abrir terminal |
 | `SUPER + D` | Abrir launcher (rofi) |
+| `SUPER + W` | 🎨 Selector de wallpapers |
 
 ### Navegación
 
@@ -103,7 +118,7 @@ ln -sf ~/dumRice/.config/waybar ~/.config/waybar
 | `SUPER + SHIFT + 1-9` | Mover ventana a workspace |
 | `SUPER + Mouse` | Mover/Redimensionar ventana |
 
-### Multimedia
+### Utilidades
 
 | Keybinding | Acción |
 |------------|--------|
@@ -113,30 +128,40 @@ ln -sf ~/dumRice/.config/waybar ~/.config/waybar
 | `XF86AudioLowerVolume` | Bajar volumen |
 | `XF86AudioMute` | Mutear audio |
 
-> **Nota:** Revisa `~/.config/hypr/hyprland.conf` para ver todos los keybindings
+## 🎨 Wallpaper Picker
 
-## 🎨 Personalización
+El wallpaper picker (`SUPER + W`) incluye:
+- ✨ Vista previa con miniaturas en Rofi
+- 💾 Persistencia del último wallpaper usado
+- 🔄 Transiciones suaves con swww
+- 🖼️ Generación automática de miniaturas con ImageMagick
 
-### Cambiar wallpaper
+### Agregar tus propios wallpapers
 
+Simplemente copia tus imágenes a:
 ```bash
-# Edita el archivo de Hyprland
-nano ~/.config/hypr/hyprland.conf
-
-# Busca la línea:
-exec-once = swaybg -i ~/wallpaper.jpg
-
-# Cambia la ruta a tu wallpaper
+~/.config/wallpapers/
 ```
 
-### Modificar Waybar
+Los formatos soportados son: `.jpg`, `.png`, `.jpeg`
+
+## 🔧 Personalización
+
+### Cambiar wallpaper predeterminado
+
+El último wallpaper seleccionado se guarda automáticamente y se restaura al iniciar sesión.
+
+### Configurar Waybar
 
 ```bash
-# Edita la configuración
-nano ~/.config/waybar/config.json
+nano ~/.config/waybar/config.json  # Configuración
+nano ~/.config/waybar/style.css     # Estilos
+```
 
-# Edita los estilos
-nano ~/.config/waybar/style.css
+### Modificar keybindings
+
+```bash
+nano ~/.config/hypr/hyprland.conf
 ```
 
 ## 🔄 Actualizar
@@ -149,45 +174,58 @@ git pull
 ./install.sh
 ```
 
-## 🐛 Troubleshooting
+## 🐛 Solución de problemas
 
-### Hyprland no inicia
+### El wallpaper picker no muestra imágenes
 
+Asegúrate de tener ImageMagick instalado:
 ```bash
-# Verifica los logs
-cat /tmp/hypr/$(ls -t /tmp/hypr/ | head -n 1)/hyprland.log
-
-# O inicia desde TTY para ver errores
-Hyprland
+sudo pacman -S imagemagick
 ```
 
-### Waybar no aparece
+### El wallpaper no se aplica
+
+Verifica que swww-daemon esté corriendo:
+```bash
+pgrep swww
+```
+
+Si no está corriendo, inicia manualmente:
+```bash
+swww-daemon &
+```
+
+### Verificar logs de Hyprland
 
 ```bash
-# Reinicia waybar
+cat /tmp/hypr/$(ls -t /tmp/hypr/ | head -n 1)/hyprland.log
+```
+
+### Reiniciar waybar
+
+```bash
 killall waybar
 waybar &
 ```
 
-### Problemas con el cursor
-
-```bash
-# Agrega a hyprland.conf
-env = XCURSOR_SIZE,24
-```
-
-## 📁 Estructura del repositorio
+## 📁 Estructura del proyecto
 
 ```
 dumRice/
 ├── .config/
 │   ├── hypr/
 │   │   ├── hyprland.conf
-│   │   └── hyprpaper.conf
+│   │   ├── hyprpaper.conf
+│   │   └── scripts/
+│   │       ├── wallpicker.sh
+│   │       └── restore-wallpaper.sh
 │   ├── waybar/
 │   │   ├── config.json
 │   │   └── style.css
-│   └── ...
+│   └── wallpapers/
+├── scripts/
+│   ├── wallpicker.sh
+│   └── restore-wallpaper.sh
 ├── screenshots/
 ├── install.sh
 └── README.md
@@ -205,20 +243,19 @@ Las contribuciones son bienvenidas. Si encuentras algún bug o tienes sugerencia
 
 ## 📝 Créditos
 
-- Inspirado en [otros rices si aplica]
-- Wallpapers de [fuente]
-- Tema basado en [nombre del tema]
+- Inspirado por la comunidad de r/unixporn
+- Wallpapers de [wallhaven.cc](https://wallhaven.cc)
 
 ## 📄 Licencia
 
 Este proyecto está bajo la licencia MIT. Siéntete libre de usar y modificar estas configuraciones.
 
-## 💬 Contacto
+## 📧 Contacto
 
 - GitHub: [@dumwaza](https://github.com/dumwaza)
 
 ---
 
-⭐ Si te gusta este rice, dale una estrella al repo!
+⭐ Si te gusta este rice, ¡dale una estrella al repo!
 
 **Hecho con ❤️ y muchas horas de configuración**
