@@ -24,17 +24,14 @@ Mi configuración personal de Hyprland - Un rice minimalista y funcional.
 ### Arch Linux / Manjaro
 
 ```bash
-sudo pacman -S hyprland waybar kitty rofi dunst \
-               polkit-kde-agent qt5-wayland qt6-wayland \
-               pipewire wireplumber xdg-desktop-portal-hyprland
-```
+# ESENCIAL - Sin esto no funcionará
+sudo pacman -S swww
 
-### Fedora
+# Básicas
+sudo pacman -S hyprland waybar kitty rofi dunst
 
-```bash
-sudo dnf install hyprland waybar kitty rofi dunst \
-                 polkit-gnome pipewire wireplumber \
-                 xdg-desktop-portal-hyprland
+# Multimedia y utilidades
+sudo pacman -S playerctl imagemagick
 ```
 
 ### Dependencias opcionales
