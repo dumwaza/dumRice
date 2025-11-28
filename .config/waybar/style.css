@@ -1,0 +1,121 @@
+/*           __                ____  _         
+        ____/ /_  ______ ___  / __ \(_)_______ 
+       / __  / / / / __ `__ \/ /_/ / / ___/ _ \
+      / /_/ / /_/ / / / / / / _, _/ / /__/  __/
+      \__,_/\__,_/_/ /_/ /_/_/ |_/_/\___/\___/ */
+                                           
+
+
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 7 Free", "Font Awesome 7 Brands", monospace;
+  font-weight: 900;
+}
+
+
+    @define-color bg rgba(26, 26, 26, 0.85);
+    @define-color fg #fff;
+    @define-color accent #fff;
+    @define-color selected rgba(60, 60, 60, 0.85);
+    @define-color urgent #f38ba8;
+
+
+window#waybar {
+    background-color: @bg;
+    border: 1px solid rgba(100, 100, 100, 0.35);
+    border-radius: 12px;
+    margin: 8px;
+    padding: 0 12px;
+}
+
+#workspaces button {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: @fg; 
+    margin: 0 2px;
+    border: none;
+    background: transparent;
+    transition: color 0.3s ease;
+}
+
+#workspaces button.active {
+    color: @fg;
+}
+
+#workspaces button:hover {
+    color: @fg;
+}
+
+#clock {
+    color: @fg;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 20px;
+}
+
+#pulseaudio,
+#network,
+#custom-power {
+    padding: 0 10px;
+    margin: 0 2px;
+}
+
+#pulseaudio {
+    color: @fg;
+}
+
+#pulseaudio.muted {
+    color: @fg;
+}
+
+#network {
+    color: @fg;
+}
+
+#network.disconnected {
+    color: @fg;
+}
+
+#custom-power {
+    color: @fg;
+    font-size: 15px;
+    margin-left: 8px;
+    padding-right: 8px;
+}
+
+#custom-power:hover {
+    color: @fg;
+}
+
+#tray {
+    padding: 0px 8px;
+    margin: 0 4px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @urgent;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+#tray menu {
+    background-color: @bg;
+    border: 1px solid rgba(100, 100, 100, 0.35);
+    border-radius: 8px;
+    padding: 8px;
+    color: @fg;
+}
+
+#tray menu menuitem {
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+#tray menu menuitem:hover {
+    background-color: @selected;
+}
