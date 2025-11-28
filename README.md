@@ -23,7 +23,8 @@ sudo pacman -S git hyprland waybar kitty rofi dunst \
                swww imagemagick hyprlock \
                polkit-kde-agent qt5-wayland qt6-wayland \
                pipewire wireplumber xdg-desktop-portal-hyprland \
-               ttf-jetbrains-mono-nerd papirus-icon-theme
+               ttf-jetbrains-mono-nerd papirus-icon-theme \
+               noto-fonts-emoji libnotify
 ```
 
 ### Utilidades adicionales
@@ -47,7 +48,8 @@ sudo dnf install git hyprland waybar kitty rofi dunst \
                  swww ImageMagick hyprlock \
                  polkit-gnome pipewire wireplumber \
                  xdg-desktop-portal-hyprland \
-                 jetbrains-mono-fonts-all papirus-icon-theme
+                 jetbrains-mono-fonts-all papirus-icon-theme \
+                 google-noto-emoji-fonts libnotify
 ```
 
 ## 🚀 Instalación
