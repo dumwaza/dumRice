@@ -19,10 +19,11 @@ Mi configuración personal de Hyprland - Un rice minimalista y funcional.
 ### Obligatorias
 
 ```bash
-sudo pacman -S hyprland waybar kitty rofi dunst \
-               swww imagemagick \
+sudo pacman -S git hyprland waybar kitty rofi dunst \
+               swww imagemagick hyprlock \
                polkit-kde-agent qt5-wayland qt6-wayland \
-               pipewire wireplumber xdg-desktop-portal-hyprland
+               pipewire wireplumber xdg-desktop-portal-hyprland \
+               ttf-jetbrains-mono-nerd papirus-icon-theme
 ```
 
 ### Utilidades adicionales
@@ -42,10 +43,11 @@ sudo pacman -S brightnessctl playerctl
 
 **Fedora:**
 ```bash
-sudo dnf install hyprland waybar kitty rofi dunst \
-                 swww ImageMagick \
+sudo dnf install git hyprland waybar kitty rofi dunst \
+                 swww ImageMagick hyprlock \
                  polkit-gnome pipewire wireplumber \
-                 xdg-desktop-portal-hyprland
+                 xdg-desktop-portal-hyprland \
+                 jetbrains-mono-fonts-all papirus-icon-theme
 ```
 
 ## 🚀 Instalación
