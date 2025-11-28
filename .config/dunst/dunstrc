@@ -17,19 +17,19 @@
     transparency = 0
 
 [urgency_low]
-    background = "#0F0F1AE6"
-    foreground = "#cdd6f4"
+    background = "#1A1A1AD9"
+    foreground = "#fff"
     frame_color = "#64646459"
     timeout = 4
 
 [urgency_normal]
-    background = "#0F0F1AE6"
-    foreground = "#cdd6f4"
+    background = "#1A1A1AD9"
+    foreground = "#fff"
     frame_color = "#64646459"
     timeout = 6
 
 [urgency_critical]
-    background = "#0F0F1AE6"
-    foreground = "#cdd6f4"
+    background = "#1A1A1AD9"
+    foreground = "#fff"
     frame_color = "#64646459"
     timeout = 0
